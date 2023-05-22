@@ -2,7 +2,7 @@
 
 1. Grocery Store
     
-    `AllProduct [SKU(string), name(string), type(string), quantity(integer), price(real)]`
+    `AllProduct [__SKU(string)__, name(string), type(string), quantity(integer), price(real)]`
     
     | SKU | Name | Type | Quantity | Price |
     | --- | --- | --- | --- | --- |
@@ -12,7 +12,7 @@
     | 29394582 | type-C charge | charger | 10000 | 10 |
     | 42892430 | USB charge | charger | 10000 | 10 |
     
-    ``InventoryByType [type(string), quantity(integer)]`
+    `InventoryByType [__type(string)__, quantity(integer)]`
     
     | Type | Quantity |
     | --- | --- |
@@ -20,7 +20,7 @@
     | charger | 20000 |
 2. Grocery store + Aisle
     
-    `DisplayAisle [SKU(string), aisle(integer)]`
+    `ProductAisle [__SKU(string)__, __aisle(integer)__]`
     
     | SKU | Aisle |
     | --- | --- |
@@ -34,7 +34,7 @@
     | bb4289 | 2 |
 3. Car dealership
     
-    `Car [VIN(integer), make(string), model(string), year(integer), color(string)]`
+    `Car [__VIN(integer)__, make(string), model(string), year(integer), color(string)]`
     
     | VIN | make | model | year | color |
     | --- | --- | --- | --- | --- |
@@ -44,7 +44,7 @@
     | 20002 | Mazda | cx5 | 2004 | red |
     | 30001 | Honda | civic | 2020 | silver |
     
-    `Salesperson [SSN(integer), name(string)]`
+    `Salesperson [__SSN(integer)__, name(string)]`
     
     | SSN | name |
     | --- | --- |
@@ -54,7 +54,7 @@
     | 448593782 | Dan |
     | 538756398 | Elyse |
     
-    `AssignedCars [salesSSN(integer), carVIN(integer)]`
+    `AssignedCars [__salesSSN(integer)__, __carVIN(integer)__]`
     
     | SSN | VIN |
     | --- | --- |
@@ -68,45 +68,45 @@
 
 ```sql
 CREATE TABLE Patrons (
-  Name char(20),
-  CardNum int,
-  PRIMARY KEY (CardNum)
+    Name char(20),
+    CardNum int,
+    PRIMARY KEY (CardNum)
 )
 
 CREATE TABLE Phones (
-  CardNum int,
-	Phone int,
-  PRIMARY KEY (CardNum, Phone),
-  FOREIGN KEY (CardNum) REFERENCES Patrons(CardNum)
+    CardNum int,
+    Phone int,
+    PRIMARY KEY (CardNum, Phone),
+    FOREIGN KEY (CardNum) REFERENCES Patrons(CardNum)
 )
 
 CREATE TABLE Titles (
-	ISBN int,
-	Title char(50),
-	Author char(20),
-	PRIMARY KEY (ISBN),
-	UNIQUE (Title, Author)
+    ISBN int,
+    Title char(50),
+    Author char(20),
+    PRIMARY KEY (ISBN),
+    UNIQUE (Title, Author)
 )
 
 CREATE TABLE Inventory (
-  SerialNum int,
-	ISBN int,
-	PRIMARY KEY (SerialNum)
-	FOREIGN KEY (ISBN) REFERENCES Titles(ISBN)
+    SerialNum int,
+    ISBN int,
+    PRIMARY KEY (SerialNum)
+    FOREIGN KEY (ISBN) REFERENCES Titles(ISBN)
 )
 
 CREATE TABLE CheckedOut (
-	CardNum int,
-	SerialNum int,
-	PRIMARY KEY (SerialNum),
-	FOREIGN KEY (CardNum) REFERENCES Patrons(CardNum),
-	FOREIGN KEY (SerialNum) REFERENCES Inventory(SerialNum)
+    CardNum int,
+    SerialNum int,
+    PRIMARY KEY (SerialNum),
+    FOREIGN KEY (CardNum) REFERENCES Patrons(CardNum),
+    FOREIGN KEY (SerialNum) REFERENCES Inventory(SerialNum)
 )
 ```
 
 ### Part 3 - Fill in Tables (Car Dealership)
 
-`Car [VIN(integer), make(string), model(string), year(integer), color(string)]`
+`Car [__VIN(integer)__, make(string), model(string), year(integer), color(string)]`
 
 | VIN | make | model | year | color |
 | --- | --- | --- | --- | --- |
@@ -116,7 +116,7 @@ CREATE TABLE CheckedOut (
 | 30001 | Subaru | WRX | 2016 | Blue |
 | 40001 | Ford | F150 | 2004 | Red |
 
-`Salesperson [SSN(integer), name(string)]`
+`Salesperson [__SSN(integer)__, name(string)]`
 
 | SSN | name |
 | --- | --- |
@@ -124,7 +124,7 @@ CREATE TABLE CheckedOut (
 | 222334444 | Hannah |
 | 333445555 | Steve |
 
-`AssignedCars [salesSSN(integer), carVIN(integer)]`
+`AssignedCars [__salesSSN(integer)__, __carVIN(integer)__]`
 
 | SSN | VIN |
 | --- | --- |
