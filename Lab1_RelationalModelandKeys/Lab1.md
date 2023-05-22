@@ -138,13 +138,13 @@ CREATE TABLE CheckedOut (
 
 | Attribute Sets | Superkey? | Proper Subsets | Key? |
 | --- | --- | --- | --- |
-| {A1} | No | N/A | No |
-| {A2} | No | N/A | No |
-| {A3} | No | N/A | No |
-| {A1, A2} | Yes | {A1}, {A2} | Yes |
-| {A1, A3} | No | {A1}, {A3} | No |
-| {A2, A3} | No | {A2}, {A3} | No |
-| {A1, A2, A3} | Yes | {A1}, {A2}, {A3}, {A1, A2}, {A1, A3}, {A2, A3} | No |
+| {A1} | No | {} | No |
+| {A2} | No | {} | No |
+| {A3} | No | {} | No |
+| {A1, A2} | Yes | {}, {A1}, {A2} | Yes |
+| {A1, A3} | No | {}, {A1}, {A3} | No |
+| {A2, A3} | No | {}, {A2}, {A3} | No |
+| {A1, A2, A3} | Yes | {}, {A1}, {A2}, {A3}, {A1, A2}, {A1, A3}, {A2, A3} | No |
 
 ### Part 5 - Abstract Reasoning
 
