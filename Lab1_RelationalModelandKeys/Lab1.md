@@ -150,20 +150,21 @@ CREATE TABLE CheckedOut (
 
 1. If {x} is a superkey, then any set containing x is also a superkey.
     
-    Yes. If x has no duplicated value, then any set containing x also has no duplicated value because x has unique value.
+    True. If x has no duplicated value, then any set containing x also has no duplicated value because x has unique value.
     
 2. If {x} is a key, then any set containing x is also a key.
     
-    No. A key must be a superkey, so x is a superkey. However, a set can’t be a key if any subsets of its field is a superkey. 
+    False. A key must be a superkey, so x is a superkey. However, a set can’t be a key if any subsets of its field is a superkey. 
     
 3. If {x} is a key, then {x} is also a superkey.
     
-    Yes. A key must be a superkey be definition.
+    True. A key must be a superkey be definition.
     
 4. If {x, y, z} is a superkey, then one of {x}, {y}, or {z} must also be a superkey.
     
-    No. {x, y, z} has no duplicated value doesn’t mean subsets of its field also has no duplicated value.
+    False. {x, y, z} has no duplicated value doesn’t mean subsets of its field also has no duplicated value.
     
 5. If an entire schema consists of the set {x, y, z}, and if none of the proper subsets of {x, y, z} are keys, then {x, y, z} must be a key.
     
-    No. {x, y, z} might has duplicated value.
+    True. For an available schema, there must be a key. If none of the subsets of {x, y, z} is a key, then {x, y, z} must be the key for the schema because it is the only set that has the potential to identify the tuples in the relation uniquely.
+
